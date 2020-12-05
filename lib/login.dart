@@ -8,6 +8,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 String name;
 String email;
 String imageUrl;
+String number;
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -38,6 +39,7 @@ Future<String> signInWithGoogle() async {
     name = user.displayName;
     email = user.email;
     imageUrl = user.photoURL;
+    number = user.phoneNumber;
 
     final User currentUser = _auth.currentUser;
     assert(user.uid == currentUser.uid);

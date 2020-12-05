@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hackduke/user.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'login.dart';
 
 class Home extends StatefulWidget {
@@ -15,13 +17,28 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: HexColor('#00000'),
-        title: Icon(Icons.info_outline),
+        title: IconButton(
+          icon: Icon(Icons.info_outline),
+          onPressed: () async {
+            const url = 'https://www.cdc.gov/coronavirus/2019-ncov/index.html';
+            if (await canLaunch(url)) {
+              await launch(url);
+            } else {
+              throw 'Could not launch $url';
+            }
+          },
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: CircleAvatar(
-              backgroundColor: Colors.black,
-              backgroundImage: NetworkImage(imageUrl),
+            child: InkWell(
+              child: CircleAvatar(
+                backgroundColor: Colors.black,
+                backgroundImage: NetworkImage(imageUrl),
+              ),
+              onTap: () {
+                _showDropdown(context);
+              },
             ),
           ),
         ],
@@ -110,4 +127,41 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+}
+
+void _showDropdown(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: HexColor('#000000'),
+          title: FlatButton(
+            child: Text(
+              "Account Page",
+              style: TextStyle(color: Colors.white, fontSize: 17),
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => User()),
+              );
+            },
+          ),
+          content: FlatButton(
+            child: Text(
+              "Sign out",
+              style: TextStyle(color: Colors.white, fontSize: 17),
+            ),
+            onPressed: () {
+              signOutGoogle();
+              Navigator.pop(context);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => Login()),
+              );
+            },
+          ),
+        );
+      });
 }
