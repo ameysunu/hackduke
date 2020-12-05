@@ -69,6 +69,43 @@ class _HomeState extends State<Home> {
               },
             ),
           ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.05,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              "Report your symptoms",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: RaisedButton(
+              color: HexColor('#FF7585'),
+              child: Container(
+                height: 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Survey",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "Roboto Medium",
+                          fontSize: 18),
+                    ),
+                  ],
+                ),
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              onPressed: () {
+                null;
+              },
+            ),
+          ),
         ],
       ),
     );
