@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hackduke/Survey/final.dart';
 import 'package:hackduke/home.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -112,7 +113,7 @@ class _Question5State extends State<Question5> {
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => Home()),
+                          MaterialPageRoute(builder: (context) => Final()),
                         );
                       },
                     ),
