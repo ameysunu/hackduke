@@ -6,7 +6,12 @@ import 'package:hexcolor/hexcolor.dart';
 import 'home.dart';
 
 String quality = "High";
-int x = 10;
+int x = 20;
+int a = 4;
+int b = 3;
+int c = 8;
+int d = 1;
+int e = 0;
 
 class Location extends StatefulWidget {
   @override
@@ -32,7 +37,7 @@ class _LocationState extends State<Location> {
   Widget build(BuildContext context) {
     LatLng pinPosition = LatLng(36.00104441624884, -78.93925997353665);
     CameraPosition initialLocation =
-        CameraPosition(zoom: 15, bearing: 30, target: pinPosition);
+        CameraPosition(zoom: 16, bearing: 30, target: pinPosition);
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -78,7 +83,7 @@ class _LocationState extends State<Location> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  "Currently, there are $x people at this site. Of these $x people, [a] have tested positive for covid, [b + c] have experienced symptoms of covid, and [d + e] have come into contact with people diagnosed with and/or exhibiting symptoms of covid. In the last 14 days, [a’] people diagnosed with covid have visited this site. ",
+                  "Currently, there are $x people at this site. Of these $x people, $a have tested positive for covid, ${b + c} have experienced symptoms of covid, and ${d + e} have come into contact with people diagnosed with and/or exhibiting symptoms of COVID. ",
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
@@ -95,11 +100,11 @@ class _LocationState extends State<Location> {
                         _controller.complete(controller);
                         setState(() {
                           _markers.add(Marker(
-                              markerId: MarkerId("Test Location 1"),
+                              markerId: MarkerId("Brodhead Center"),
                               position: pinPosition,
                               infoWindow: InfoWindow(
-                                title: "Test Location 1",
-                                snippet: 'Test',
+                                title: "Brodhead Center",
+                                snippet: 'Duke West Union',
                               ),
                               icon: pinLocationIcon));
                         });
