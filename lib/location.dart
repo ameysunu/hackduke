@@ -5,7 +5,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'home.dart';
 
-int quality = 0;
+String quality = "High";
+int x = 10;
 
 class Location extends StatefulWidget {
   @override
@@ -29,9 +30,9 @@ class _LocationState extends State<Location> {
 
   @override
   Widget build(BuildContext context) {
-    LatLng pinPosition = LatLng(25.204849, 55.270782);
+    LatLng pinPosition = LatLng(36.00104441624884, -78.93925997353665);
     CameraPosition initialLocation =
-        CameraPosition(zoom: 10, bearing: 30, target: pinPosition);
+        CameraPosition(zoom: 15, bearing: 30, target: pinPosition);
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -54,10 +55,7 @@ class _LocationState extends State<Location> {
                       children: [
                         Text(
                           locationController.text,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "Roboto Medium",
-                              fontSize: 18),
+                          style: TextStyle(color: Colors.white, fontSize: 18),
                         ),
                       ],
                     ),
@@ -80,7 +78,7 @@ class _LocationState extends State<Location> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  "Currently, there are [x] people at this site. Of these [x] people, [a] have tested positive for covid, [b + c] have experienced symptoms of covid, and [d + e] have come into contact with people diagnosed with and/or exhibiting symptoms of covid. In the last 14 days, [a’] people diagnosed with covid have visited this site. ",
+                  "Currently, there are $x people at this site. Of these $x people, [a] have tested positive for covid, [b + c] have experienced symptoms of covid, and [d + e] have come into contact with people diagnosed with and/or exhibiting symptoms of covid. In the last 14 days, [a’] people diagnosed with covid have visited this site. ",
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
