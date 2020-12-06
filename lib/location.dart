@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hackduke/pages/bluecorn.dart';
+import 'package:hackduke/pages/cosmic.dart';
+import 'package:hackduke/pages/shooter.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'home.dart';
 
@@ -170,12 +173,47 @@ class _SimilarLocationsState extends State<SimilarLocations> {
               padding: const EdgeInsets.all(10.0),
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.9,
+                child: InkWell(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Shooters",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      Text(
+                        "High",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      )
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => Shooter()),
+                    );
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.9,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Shooters",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    InkWell(
+                      child: Text(
+                        "Cosmic Cantina",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => Cosmic()),
+                        );
+                      },
                     ),
                     Text(
                       "High",
@@ -189,37 +227,26 @@ class _SimilarLocationsState extends State<SimilarLocations> {
               padding: const EdgeInsets.all(10.0),
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.9,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Cosmic Cantina",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                    Text(
-                      "High",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.9,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Blue Corn Cafe",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                    Text(
-                      "Medium",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    )
-                  ],
+                child: InkWell(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Blue Corn Cafe",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      Text(
+                        "Medium",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      )
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => Blue()),
+                    );
+                  },
                 ),
               ),
             ),
