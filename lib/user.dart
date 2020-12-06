@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hackduke/home.dart';
 import 'package:hackduke/login.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class User extends StatefulWidget {
   @override
@@ -75,6 +76,23 @@ class _UserState extends State<User> {
                       context,
                       MaterialPageRoute(builder: (context) => Login()),
                     );
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: InkWell(
+                  child: Text(
+                    "Need help with something? Get in touch with us.",
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                  onTap: () async {
+                    const url = 'https://github.com/ameysunu/hackduke/issues';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
                   },
                 ),
               ),
