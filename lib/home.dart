@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hackduke/Survey/survey.dart';
 import 'package:hackduke/location.dart';
 import 'package:hackduke/user.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'login.dart';
+import 'Survey/ques1.dart';
 
 final locationController = TextEditingController();
 
@@ -132,7 +134,10 @@ class _HomeState extends State<Home> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 onPressed: () {
-                  null;
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Survey()),
+                  );
                 },
               ),
             ),

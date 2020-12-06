@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hackduke/Survey/ques1.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class Survey extends StatefulWidget {
   @override
@@ -15,57 +16,79 @@ class _SurveyState extends State<Survey> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.black,
         body: Column(
           children: [
             Card(
-              margin: EdgeInsets.all(15),
-              elevation: 5.0,
-              child: ListTile(
-                // leading: Image.asset("assets/images/math.png"),
-                title: Text(
-                  'Question 1',
-                  style: GoogleFonts.abel(
-                      textStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  )),
+                margin: EdgeInsets.all(15),
+                elevation: 5.0,
+                child: ListTile(
+                  // leading: Image.asset("assets/images/math.png"),
+                  title: Text(
+                    'Survey',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 35, vertical: 10),
                 ),
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 35, vertical: 10),
-              ),
-              color: Colors.blue[100],
-              // shape: RoundedRectangleBorder(
-              //   borderRadius: BorderRadius.circular(15),
-              // ),
-            ),
+                color: HexColor('#9586D8')
+                // shape: RoundedRectangleBorder(
+                //   borderRadius: BorderRadius.circular(15),
+                // ),
+                ),
             SizedBox(
               height: 20,
             ),
-            Text(
-                'By clicking on "Begin Survey" you consent\n to the usage of your symptom\n information will remain\n anonymous, and none of it\will be made known tp the other users,\n or developers of this app'),
-            ListTile(
-              title: const Text('Yes, tested positive'),
-              leading: Radio(
-                value: Options.o1,
-                groupValue: _character,
-                onChanged: (Options value) {
-                  setState(() {
-                    _character = value;
-                  });
-                },
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                'By clicking on "Begin Survey" you consent to the usage of your symptom information will remain anonymous, and none of it will be made known tp the other users, or developers of this app.',
+                style: TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),
-            RaisedButton(
-                child: Text('Begin Survey'),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Question1(),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.3,
+                child: Image.asset('images/survey.png'),
+              ),
+            ),
+            Expanded(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: RaisedButton(
+                    color: HexColor('#FF8CAE'),
+                    child: Container(
+                      height: 50,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Begin Survey",
+                            style: TextStyle(color: Colors.black, fontSize: 18),
+                          ),
+                        ],
+                      ),
                     ),
-                  );
-                })
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => Question1()),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
