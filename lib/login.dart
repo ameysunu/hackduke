@@ -1,6 +1,62 @@
 import 'package:flutter/material.dart';
-import 'package:hackduke/Survey/survey.dart';
+import 'package:hackduke/home.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+String name;
+String email;
+String imageUrl;
+String number;
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
+final GoogleSignIn googleSignIn = GoogleSignIn();
+
+Future<String> signInWithGoogle() async {
+  await Firebase.initializeApp();
+
+  final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+  final GoogleSignInAuthentication googleSignInAuthentication =
+      await googleSignInAccount.authentication;
+
+  final AuthCredential credential = GoogleAuthProvider.credential(
+    accessToken: googleSignInAuthentication.accessToken,
+    idToken: googleSignInAuthentication.idToken,
+  );
+
+  final UserCredential authResult =
+      await _auth.signInWithCredential(credential);
+  final User user = authResult.user;
+
+  if (user != null) {
+    assert(user.email != null);
+    assert(user.displayName != null);
+    assert(user.photoURL != null);
+    assert(!user.isAnonymous);
+    assert(await user.getIdToken() != null);
+
+    name = user.displayName;
+    email = user.email;
+    imageUrl = user.photoURL;
+    number = user.phoneNumber;
+
+    final User currentUser = _auth.currentUser;
+    assert(user.uid == currentUser.uid);
+
+    print('signInWithGoogle succeeded: $user');
+
+    return '$user';
+  }
+
+  return null;
+}
+
+Future<void> signOutGoogle() async {
+  await googleSignIn.signOut();
+
+  print("User Signed Out");
+}
 
 class Login extends StatefulWidget {
   @override
@@ -58,12 +114,17 @@ class _LoginState extends State<Login> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Survey(),
-                    ),
-                  );
+                  signInWithGoogle().then((result) {
+                    if (result != null) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return Home();
+                          },
+                        ),
+                      );
+                    }
+                  });
                 },
               ),
             ),
