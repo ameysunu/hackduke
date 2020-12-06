@@ -34,7 +34,7 @@ class _Question5State extends State<Question5> {
                     elevation: 5.0,
                     child: ListTile(
                       title: Text(
-                        'Question 5',
+                        'Question 4',
                         style: GoogleFonts.abel(
                             textStyle: TextStyle(
                           color: Colors.black,
@@ -113,7 +113,7 @@ class _Question5State extends State<Question5> {
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => Final()),
+                          MaterialPageRoute(builder: (context) => Home()),
                         );
                       },
                     ),
