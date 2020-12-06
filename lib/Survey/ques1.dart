@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hackduke/Survey/final.dart';
 import 'package:hackduke/Survey/ques2.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -151,10 +152,17 @@ class _Question1State extends State<Question1> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => Question2()),
-                      );
+                      if (_character == Options1.o1) {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => Final()),
+                        );
+                      } else {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => Question2()),
+                        );
+                      }
                     },
                   ),
                 ),
