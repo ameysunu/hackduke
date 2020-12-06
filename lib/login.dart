@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackduke/Survey/survey.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class Login extends StatefulWidget {
@@ -57,7 +58,12 @@ class _LoginState extends State<Login> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 onPressed: () {
-                  null;
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Survey(),
+                    ),
+                  );
                 },
               ),
             ),
