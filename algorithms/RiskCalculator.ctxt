@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=RiskCalculator
+comment1.params=population\ a\ b\ c\ d\ e\ rad
+comment1.target=java.lang.String\ calcRisk(int,\ int,\ int,\ int,\ int,\ int,\ int)
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+numComments=3
