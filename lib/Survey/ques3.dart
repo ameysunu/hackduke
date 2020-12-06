@@ -8,7 +8,7 @@ class Question3 extends StatefulWidget {
   _Question3State createState() => _Question3State();
 }
 
-enum Options3 { o1, o2, o3, o4, o5, o6, o7, o8, o9, o10 }
+enum Options3 { o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11 }
 
 class _Question3State extends State<Question3> {
   Options3 _character = Options3.o1;
@@ -198,6 +198,21 @@ class _Question3State extends State<Question3> {
                     ),
                     leading: Radio(
                       value: Options3.o10,
+                      groupValue: _character,
+                      onChanged: (Options3 value) {
+                        setState(() {
+                          _character = value;
+                        });
+                      },
+                    ),
+                  ),
+                  ListTile(
+                    title: const Text(
+                      'None of these',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    leading: Radio(
+                      value: Options3.o11,
                       groupValue: _character,
                       onChanged: (Options3 value) {
                         setState(() {
