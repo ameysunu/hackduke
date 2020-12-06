@@ -188,7 +188,7 @@ class _SimilarLocationsState extends State<SimilarLocations> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Bull City Escape",
+                      "Cosmic Cantina",
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                     Text(
@@ -207,7 +207,7 @@ class _SimilarLocationsState extends State<SimilarLocations> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Compare Foods",
+                      "Blue Corn Cafe",
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                     Text(

@@ -5,7 +5,6 @@ import 'package:hackduke/user.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'login.dart';
-import 'Survey/ques1.dart';
 
 final locationController = TextEditingController();
 

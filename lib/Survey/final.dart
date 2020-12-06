@@ -23,6 +23,12 @@ class _FinalState extends State<Final> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(10.0),
+                child: Container(
+                    height: MediaQuery.of(context).size.height * 0.3,
+                    child: Image.asset('images/alert.png')),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
                 child: Text(
                   "Urgent Care needed",
                   style: TextStyle(color: Colors.white, fontSize: 20),
